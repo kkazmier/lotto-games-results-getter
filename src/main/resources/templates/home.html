@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/home.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!--    <link href="/css/main.css" rel="stylesheet">-->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3 mt-4 mb-4">
+                <h1 class="text-center">Wyniki gier Lotto</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card-box text-center">
+                    <div class="user-pic">
+<!--                        <img src="${gameType.lotto}" class="img-fluid" alt="">-->
+                        <img src="https://www.lotto.pl/cdn/d042cbcb2df860f1ad64ce2321cc00c1.svg" class="img-fluid" alt="">
+                    </div>
+                    <h4>Lotto</h4>
+                    <hr>
+                    <p th:text="${Lotto.numbers} ?: '???'"></p>
+<!--                    <h6><span th:text="${Lotto.gameType} ?: 'a'"></span></h6>-->
+<!--                    <h6 th:text="${#objects.nullSafe(Lotto,'lotto')}"></h6>-->
+                    <a href="/getLastResult/Lotto" class="btn btn-primary">Aktualne wyniki</a>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card-box text-center">
+                    <div class="user-pic">
+                        <img src="https://www.lotto.pl/cdn/58cdcf2db4965d22e2e8243d5a1eecfe.svg" class="img-fluid" alt="User Pic">
+                    </div>
+                    <h4>Mini Lotto</h4>
+                    <hr>
+                    <p th:text="${MiniLotto.numbers} ?: '???'"></p>
+                    <hr>
+                    <a href="/getLastResult/MiniLotto" class="btn btn-primary">Aktualne wyniki</a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card-box text-center">
+                    <div class="user-pic">
+                        <img src="https://www.lotto.pl/cdn/0146a9520554de0c5ae63d7f07137d8f.svg" class="img-fluid" alt="User Pic">
+                    </div>
+                    <h4>Kaskada</h4>
+                    <hr>
+                    <p th:text="${Kaskada.numbers} ?: '???'"></p>
+                    <hr>
+                    <a href="/getLastResult/Kaskada" class="btn btn-primary">Aktualne wyniki</a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card-box text-center">
+                    <div class="user-pic">
+                        <img src="https://www.lotto.pl/cdn/1c311b9642bfec590cb1b6f27ced3d0e.svg" class="img-fluid" alt="User Pic">
+                    </div>
+                    <h4>Multi Multi</h4>
+                    <hr>
+                    <p th:text="${MultiMulti.numbers} ?: '???'"></p>
+                    <hr>
+                    <a href="/getLastResult/MultiMulti" class="btn btn-primary">Aktualne wyniki</a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card-box text-center">
+                    <div class="user-pic">
+                        <img src="https://www.lotto.pl/cdn/5d790d484336d64a5ca504fcf4ea19d2.svg" class="img-fluid" alt="User Pic">
+                    </div>
+                    <h4>Eurojackpot</h4>
+                    <hr>
+                    <p th:text="${Eurojackpot.numbers} ?: '???'"></p>
+                    <hr>
+                    <a href="/getLastResult/Eurojackpot" class="btn btn-primary">Aktualne wyniki</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
