@@ -1,0 +1,1 @@
+# lotto-games-results-getter
