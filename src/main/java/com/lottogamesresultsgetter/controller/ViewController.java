@@ -1,6 +1,6 @@
-package com.lottogameresultsgetter.controller;
+package com.lottogamesresultsgetter.controller;
 
-import com.lottoresultsgetter.model.Result;
+import com.lottogamesresultsgetter.model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
