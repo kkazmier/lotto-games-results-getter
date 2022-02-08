@@ -34,9 +34,10 @@ public class ResultController {
         model.addAttribute("Eurojackpot", new Result());
         model.addAttribute(gameType, result);
 
-        //model.addAttribute("text", "text");
+//        switch (gameType) {
+//            case "Lotto": return "Lotto";
+//            default: return "home";
+//        }
         return "home";
     }
-
-
 }
