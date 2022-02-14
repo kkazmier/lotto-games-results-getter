@@ -21,7 +21,6 @@ public class Result {
     private List<Integer> numbers;
 
     public Result() {
-        drawDate = LocalDateTime.now();
         drawSystemId = -1;
         gameType = "unknown";
         numbers = new ArrayList<>();
