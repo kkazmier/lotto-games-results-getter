@@ -37,23 +37,23 @@ public class LottoClient {
 
     public Result getLastResult(String gameType) throws JsonProcessingException {
         Result result = new Result();
-        int gamePosition = calculateGamePosition(gameType);
         int numbersQuantity = calculateGameNumbersQuantity(gameType);
         //URI url = buildUrl(gameType);
-        URI url = URI.create("https://www.lotto.pl/api/lotteries/draw-results/by-gametype?game=Lotto&index=1&size=1&sort=drawDate&order=DESC");
+        URI url = URI.create(
+                "https://www.lotto.pl/api/lotteries/draw-results/by-gametype?game=" +
+                        gameType + "&index=1&size=1&sort=drawDate&order=DESC");
+        logger.info(url.toString());
         ResponseEntity<?> response = restTemplate.getForEntity(url, String.class);
         logger.info(response.getStatusCode().toString());
         if (response.getBody().toString() != null) {
             JsonNode resultNode = new ObjectMapper().readTree(response.getBody().toString());
             logger.info("resultNode: " + resultNode);
 
-            result.setDrawDate(LocalDateTime.parse(resultNode.get("items").get(0).get("results").get(gamePosition).get("drawDate").asText().substring(0, 19)));
-            result.setDrawSystemId(resultNode.get("items").get(0).get("results").get(gamePosition).get("drawSystemId").asInt());
-            result.setDrawSystemId(resultNode.get("items").get(0).get("results").get(gamePosition).get("drawSystemId").asInt());
+            result.setDrawDate(LocalDateTime.parse(resultNode.findValue("drawDate").asText().substring(0, 19)));
             result.setGameType(gameType);
             for (int p = 0; p < numbersQuantity; p++) {
                 result.getNumbers().add(
-                        resultNode.get("items").get(0).get("results").get(gamePosition).get("resultsJson").get(p).asInt());
+                        resultNode.findValue("resultsJson").get(p).asInt());
             }
             return result;
         } else {
@@ -73,28 +73,17 @@ public class LottoClient {
         return url;
     }
 
-    public int calculateGamePosition(String gameType){
-        int pos = -1;
-        switch (gameType){
-            case "Lotto": pos = 0;
-                break;
-            case "LottoPlus": pos = 1;
-                break;
-            case "SuperSzansa": pos = 2;
-                break;
-        }
-        return pos;
-    }
-
     public int calculateGameNumbersQuantity(String gameType){
         int qty = -1;
         switch (gameType){
-            case "Lotto":
-            case "LottoPlus":
-                qty = 6;
-                break;
-            case "SuperSzansa": qty = 7;
-                break;
+            case "Lotto": qty = 6; break;
+            case "LottoPlus": qty = 6; break;
+            case "SuperSzansa": qty = 7; break;
+            case "MiniLotto": qty = 5; break;
+            case "Kaskada": qty = 12; break;
+            case "MultiMulti": qty = 19; break;
+            case "Keno": qty = 20; break;
+            case "EuroJackpot": qty = 5; break;
         }
         return qty;
     }
