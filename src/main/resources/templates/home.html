@@ -41,14 +41,34 @@
         .card-box p {
             color: #808080;
         }
+        .datetime {
+            padding: 15px;
+            margin: 20px 0px;
+            border-radius: 10px;
+            align: down;
+        }
+
 
         /* CSS styles */
+        section {
+            display: flex;
+        }
+        .numbers {
+            display: flex;
+        }
         h1 {
         font-family: Impact, sans-serif;
         color: #CE5937;
         }
         h3 {
             text-align: center;
+        }
+
+        a {
+            padding: 15px;
+            margin: 20px 0px;
+            border-radius: 10px;
+            align: down;
         }
         img {
             width: 200%;
@@ -72,13 +92,13 @@
           overflow: hidden;
         }
         .ball {
-              width: 50px;
-              height: 50px;
+              width: 30px;
+              height: 30px;
               display: flex;
               border-radius: 50%;
-              margin: 10px;
+              margin: 3px;
               background:
-            radial-gradient(
+              radial-gradient(
               circle at 30% 30%,
               #ffff00,
               #774400
@@ -92,24 +112,21 @@
             <h1 class="text-center">Wyniki gier Lotto</h1>
         </div>
     </div>
-    <div class="container d-flex flex-row">
-        <div class="row">
-            <div class="">
-                <div class="card-box text-center">
-                    <div class="user-pic">
-<!--                        <img src="${gameType.lotto}" class="img-fluid" alt="">-->
-                        <img src="https://www.lotto.pl/cdn/d042cbcb2df860f1ad64ce2321cc00c1.svg" class="img-fluid" alt="">
-                    </div>
-                    <div class="d-xl-flex flex-row justify-content-center" th:each="number: ${Lotto.numbers}">
-                        <div class="ball"> <h3 th:text="${number}"></h3></div>
-                    </div>
-
-
-
-                    <a href="/getLastResult/Lotto" class="btn btn-primary">Aktualne wyniki</a>
-
-                </div>
+    <section>
+        <div class="card-box text-center">
+            <div class="user-pic">
+                <!--                        <img src="${gameType.lotto}" class="img-fluid" alt="">-->
+                <img src="https://www.lotto.pl/cdn/d042cbcb2df860f1ad64ce2321cc00c1.svg" class="img-fluid" alt="">
             </div>
+            <div class="numbers">
+                <div class="ball" th:each="number: ${Lotto.numbers}"> <h5 th:text="${number}"></h5></div>
+            </div>
+            <div class="datetime"><h5 th:text="${#temporals.format(Lotto.drawDate, 'dd-MM-yyyy HH:mm:ss')}"></h5></div>
+
+            <span></span>
+            <a href="/getLastResult/Lotto" class="btn btn-primary">Aktualne wyniki</a>
+        </div>
+
 
                 <div class="card-box text-center">
                     <div class="user-pic">
@@ -154,7 +171,6 @@
                     <hr>
                     <a href="/getLastResult/Eurojackpot" class="btn btn-primary">Aktualne wyniki</a>
                 </div>
-        </div>
-    </div>
+    </section>
 </body>
 </html>
