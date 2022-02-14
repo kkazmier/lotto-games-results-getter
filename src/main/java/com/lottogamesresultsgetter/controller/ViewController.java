@@ -17,11 +17,8 @@ public class ViewController {
         model.addAttribute("MiniLotto", new Result());
         model.addAttribute("MultiMulti", new Result());
         model.addAttribute("Kaskada", new Result());
-        model.addAttribute("Eurojackpot", new Result());
-        //model.addAttribute("Lotto", "Lotto");
-        logger.info("Attr: " + model.getAttribute("Lotto").toString());
+        model.addAttribute("EuroJackpot", new Result());
+        model.addAttribute("Keno", new Result());
         return "home";
     }
-
-
 }
