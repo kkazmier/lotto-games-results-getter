@@ -31,7 +31,8 @@ public class ResultController {
         model.addAttribute("MiniLotto", new Result());
         model.addAttribute("MultiMulti", new Result());
         model.addAttribute("Kaskada", new Result());
-        model.addAttribute("Eurojackpot", new Result());
+        model.addAttribute("EuroJackpot", new Result());
+        model.addAttribute("Keno", new Result());
         model.addAttribute(gameType, result);
 
 //        switch (gameType) {
